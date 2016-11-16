@@ -1,13 +1,13 @@
-import httplib
+import http.client
 import json
 import hmac
 from hashlib import sha1
 import time
 import base64
-from freeboxexceptions import NetworkError
-from freeboxexceptions import FreeboxError
-from freeboxexceptions import AppTokenError
 import os
+from .freeboxexceptions import NetworkError
+from .freeboxexceptions import FreeboxError
+from .freeboxexceptions import AppTokenError
 
 
 class FreeboxCtrl:
@@ -15,7 +15,7 @@ class FreeboxCtrl:
         self.appToken = ''
         self.__appId = app_id
         self.__sessionToken = ''
-        self.__connection = httplib.HTTPConnection(target)
+        self.__connection = http.client.HTTPConnection(target)
 
     def register(self, app_name, device_name='FreeboxCtrl', app_version='1.0'):
         body = json.dumps({'app_id': self.__appId, 'app_name': app_name,
@@ -151,7 +151,7 @@ class FreeboxCtrl:
                     type = "POST"
             self.__connection.request(type, url, body, headers)
             response = self.__connection.getresponse()
-        except Exception, e:
+        except Exception as e:
             self.__connection.close()
             raise NetworkError("Freebox server is not reachable: " + e.message)
         return json.load(response)
