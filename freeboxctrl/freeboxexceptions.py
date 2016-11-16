@@ -9,7 +9,7 @@ class NetworkError(Exception):
 class FreeboxError(Exception):
     def __init__(self, value):
         self.value = value
-        print self.value
+        print(self.value)
 
     def __str__(self):
         return repr(self.value)
