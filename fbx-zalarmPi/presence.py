@@ -30,8 +30,8 @@ try:
     for key in jsonlist:
         for item, value in key.iteritems():
 
-            if str(item) == "primary_name":
-                print(json.dumps(value))
+                if str(item) == "primary_name":
+                    print(json.dumps(value))
 
                 if str(item) == "host_type":
                     print(json.dumps(value))
