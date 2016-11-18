@@ -1,4 +1,7 @@
-from distutils.core import setup
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from distutils.core import setup
 
 setup(name='freeboxctrl',
       version='0.1',
@@ -6,5 +9,6 @@ setup(name='freeboxctrl',
       author='Oxeo',
       author_email='oxeo@noreply.fr',
       url='https://github.com/oxeo/freeboxcontrol',
-      packages=['freeboxctrl'],
+      packages=find_packages(),
+      install_requires=['simplejson'],
 )

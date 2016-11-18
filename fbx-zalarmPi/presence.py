@@ -3,7 +3,6 @@
 import sys
 import time
 import json, simplejson
-sys.path.append('..')
 from freeboxctrl import FreeboxCtrl
 from freeboxctrl import NetworkError
 from freeboxctrl import AppTokenError
