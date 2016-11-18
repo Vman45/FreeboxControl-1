@@ -20,8 +20,8 @@ except:
 try:
 
 
-    #mac = "ether-84:b1:53:e4:91:54,ether-f0:25:b7:d1:74:e9"
-    mac = sys.argv[1]
+    mac = "ether-84:b1:53:e4:91:54,ether-f0:25:b7:d1:74:e9"
+    #mac = sys.argv[1]
     jsonform = myBox.state_lan_host(mac)
     jsonlist = myBox.configuration_lan_browser()
 

@@ -154,11 +154,11 @@ class FreeboxCtrl:
         except Exception as e:
             self.__connection.close()
             raise NetworkError("Freebox server is not reachable: " + e.message)
-        return json.load(response)
+        return json.loads(response.read().decode())
 
     @staticmethod
     def __gen_password(app_token, challenge):
-        h = hmac.new(str(app_token), str(challenge), sha1)
+        h = hmac.new(bytes(app_token, 'utf8'), bytes(challenge, 'utf8'), sha1)
         return h.hexdigest()
 
     @staticmethod
